@@ -1,20 +1,147 @@
-Passaggi per compilazione ed esecuzione del sistema:
+```markdown
+# 🛰️ Drone Monitoring System
 
-1) Aprire in due finestre differenti il progetto
-2) Aprire la cartella Droni in entrambe le finestre
-3) In una finestra aprire la cartella server e nell'altra la cartella client
-4) Dalla cartella client, aprire la cartella src contente i file sorgenti. Da questo percorso qui, aprire il terminale ed effettuare prima l'istruzione make clean e poi l'istruzione make
-5) Dalla cartella server, aprire la cartella src contente i file sorgenti. Da questo percorso qui, aprire il terminale ed effettuare prima l'istruzione make clean e poi l'istruzione make
-6) Dopo aver eseguito la compilazione per entrambi i processi, dirigersi in una finestra, nella cartella bin per il client e nell'altra finestra, nella cartella bin per il server. Qui sono presenti gli eseguibili dei due processi
-7) Aprire il terminale prima nella cartella bin del client ed eseguire il file tramite l'istruzione ./main
-8) Aprire il terminale nella cartella bin del server ed eseguire il file tramite l'istruzione ./main
+## 📌 Overview
 
-Nota: per terminare l'esecuzione di uno dei due processi premere la combinazione di tasti ctrl+c
+This project is a **centralized drone monitoring system** developed in C++.  
+It simulates a set of drones interacting with a control center through a **message-based architecture using Redis**.  
+The system stores operational data in a **PostgreSQL database** and provides logging and monitoring capabilities through a server-client structure.
 
-Passaggi per visualizzare i dati all'interno del database:
+The project was developed in a Linux (Ubuntu) environment.
 
-1) Dirigersi nella cartella server e poi aprire la cartella src
-2) Da questo percorso, aprire il terminale e inserire l'istruzione psql postgres
-3) Dopodiché eseguire la seguente istruzione: \c logdb_controlcenter (nome del database)
-4) Effettuare la seguente query per visualizzare tutti i dati dei droni e i controlli effettuati dai monitor: 
-   select * from DroneLog order by id;
+---
+
+## ⚙️ System Architecture
+
+The system is composed of two main components:
+
+- **Server**
+  - Handles drone coordination and system logic
+  - Receives and processes messages from clients via Redis
+  - Stores logs and operational data in PostgreSQL
+
+- **Client**
+  - Simulates drone behavior
+  - Sends updates and requests to the server
+  - Executes actions based on server instructions
+
+---
+
+## 🧰 Technologies Used
+
+- C++
+- Redis (message broker)
+- PostgreSQL (database)
+- Linux (Ubuntu)
+- Make (build system)
+
+---
+
+## 📁 Project Structure
+
+```
+
+Droni/
+│
+├── client/
+│   └── src/        # Client source code
+│   └── bin/        # Client executable
+│
+├── server/
+│   └── src/        # Server source code
+│   └── bin/        # Server executable
+│
+└── README.md
+
+````
+
+---
+
+## 🚀 Compilation & Execution
+
+### 1. Build the project
+
+Open two terminals.
+
+#### Client
+```bash
+cd Droni/client/src
+make clean
+make
+````
+
+#### Server
+
+```bash
+cd Droni/server/src
+make clean
+make
+```
+
+---
+
+### 2. Run the system
+
+First start the client:
+
+```bash
+cd Droni/client/bin
+./main
+```
+
+Then start the server:
+
+```bash
+cd Droni/server/bin
+./main
+```
+
+---
+
+## 🗄️ Database Access
+
+To inspect stored data:
+
+```bash
+psql postgres
+```
+
+Then connect to the database:
+
+```sql
+\c logdb_controlcenter
+```
+
+Query all drone logs:
+
+```sql
+SELECT * FROM DroneLog ORDER BY id;
+```
+
+---
+
+## 🧠 Key Features
+
+* Message-based communication between system components
+* Simulation of multiple drone entities
+* Centralized coordination logic
+* Persistent data storage with PostgreSQL
+* Modular client-server architecture
+* Linux-based build and execution system
+
+---
+
+## 📌 Notes
+
+* The system must be started by launching the client before the server.
+* Ensure Redis and PostgreSQL services are running before execution.
+* Built and tested on Ubuntu Linux.
+
+---
+
+## 👨‍💻 Author
+
+Computer Science Student – Sapienza University of Rome
+
+```
+```
