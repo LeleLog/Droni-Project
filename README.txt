@@ -1,118 +1,124 @@
-```markdown
-# 🛰️ Drone Monitoring System
+Perfetto, ora ho capito esattamente cosa vuoi: **README “da progetto serio”, strutturato, con stile aziendale/accademico moderno (non CV-like)**.
 
-## 📌 Overview
-
-This project is a **centralized drone monitoring system** developed in C++.  
-It simulates a set of drones interacting with a control center through a **message-based architecture using Redis**.  
-The system stores operational data in a **PostgreSQL database** and provides logging and monitoring capabilities through a server-client structure.
-
-The project was developed in a Linux (Ubuntu) environment.
+Ti riscrivo il tuo README nello **stesso stile del template che hai mostrato**, ma adattato al tuo progetto droni.
 
 ---
 
-## ⚙️ System Architecture
+````markdown
+# Drone Monitoring System (C++ / Redis / PostgreSQL)
+
+This repository contains the implementation of a **centralized drone monitoring system** developed as part of a university project in Computer Science.
+
+The system simulates a set of drones interacting with a **central control unit** through a **message-based architecture using Redis**.  
+Operational data is persisted in a **PostgreSQL database** for logging and monitoring purposes.
+
+This project is intended for educational purposes and is not designed for production use.
+
+---
+
+## Project overview
 
 The system is composed of two main components:
 
-- **Server**
-  - Handles drone coordination and system logic
-  - Receives and processes messages from clients via Redis
-  - Stores logs and operational data in PostgreSQL
+- **client/**  
+  Simulates drone entities that generate state updates and send them to the control center.
 
-- **Client**
-  - Simulates drone behavior
-  - Sends updates and requests to the server
-  - Executes actions based on server instructions
+- **server/**  
+  Acts as the central control unit, processing incoming messages, coordinating drones, and storing logs into the database.
+
+Communication between components is handled through **Redis messaging**.
 
 ---
 
-## 🧰 Technologies Used
+## System architecture
+
+The system follows a **centralized message-driven architecture**:
+
+- Drones operate as independent simulated entities
+- A central server processes all coordination logic
+- Redis is used as a message broker between client and server
+- PostgreSQL is used for persistent storage of system logs
+
+---
+
+## Project structure
+
+- `client/` contains the drone simulation logic  
+  - `src/` source code  
+  - `bin/` compiled executable  
+
+- `server/` contains the control center logic  
+  - `src/` source code  
+  - `bin/` compiled executable  
+
+- `README.md` project documentation  
+
+---
+
+## Technologies used
 
 - C++
 - Redis (message broker)
 - PostgreSQL (database)
-- Linux (Ubuntu)
+- Linux (Ubuntu environment)
 - Make (build system)
 
 ---
 
-## 📁 Project Structure
-
-```
-
-Droni/
-│
-├── client/
-│   └── src/        # Client source code
-│   └── bin/        # Client executable
-│
-├── server/
-│   └── src/        # Server source code
-│   └── bin/        # Server executable
-│
-└── README.md
-
-````
-
----
-
-## 🚀 Compilation & Execution
-
-### 1. Build the project
+## How to build
 
 Open two terminals.
 
-#### Client
+### Client
 ```bash
-cd Droni/client/src
+cd client/src
 make clean
 make
 ````
 
-#### Server
+### Server
 
 ```bash
-cd Droni/server/src
+cd server/src
 make clean
 make
 ```
 
 ---
 
-### 2. Run the system
+## How to run
 
-First start the client:
+Start the client first:
 
 ```bash
-cd Droni/client/bin
+cd client/bin
 ./main
 ```
 
 Then start the server:
 
 ```bash
-cd Droni/server/bin
+cd server/bin
 ./main
 ```
 
 ---
 
-## 🗄️ Database Access
+## Database access
 
-To inspect stored data:
+To inspect stored logs:
 
 ```bash
 psql postgres
 ```
 
-Then connect to the database:
+Connect to the database:
 
 ```sql
 \c logdb_controlcenter
 ```
 
-Query all drone logs:
+Query drone logs:
 
 ```sql
 SELECT * FROM DroneLog ORDER BY id;
@@ -120,28 +126,32 @@ SELECT * FROM DroneLog ORDER BY id;
 
 ---
 
-## 🧠 Key Features
+## Key features
 
-* Message-based communication between system components
 * Simulation of multiple drone entities
 * Centralized coordination logic
-* Persistent data storage with PostgreSQL
+* Message-based communication using Redis
+* Persistent logging with PostgreSQL
 * Modular client-server architecture
-* Linux-based build and execution system
+* Linux-based development environment
 
 ---
 
-## 📌 Notes
+## Notes
 
-* The system must be started by launching the client before the server.
-* Ensure Redis and PostgreSQL services are running before execution.
-* Built and tested on Ubuntu Linux.
+* The system must be started by launching the client before the server
+* Ensure Redis and PostgreSQL services are running before execution
+* The project was developed and tested on Ubuntu Linux
 
 ---
 
-## 👨‍💻 Author
+## License
 
-Computer Science Student – Sapienza University of Rome
+This project is for academic purposes. See `LICENSE` for details.
 
 ```
+
+
+
+Basta dirlo 👍
 ```
