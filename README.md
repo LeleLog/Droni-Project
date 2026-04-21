@@ -142,4 +142,3 @@ SELECT * FROM DroneLog ORDER BY id;
 
 This project is for academic purposes. See `LICENSE` for details.
 
-```
