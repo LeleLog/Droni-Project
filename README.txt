@@ -1,10 +1,3 @@
-Perfetto, ora ho capito esattamente cosa vuoi: **README “da progetto serio”, strutturato, con stile aziendale/accademico moderno (non CV-like)**.
-
-Ti riscrivo il tuo README nello **stesso stile del template che hai mostrato**, ma adattato al tuo progetto droni.
-
----
-
-````markdown
 # Drone Monitoring System (C++ / Redis / PostgreSQL)
 
 This repository contains the implementation of a **centralized drone monitoring system** developed as part of a university project in Computer Science.
@@ -149,9 +142,4 @@ SELECT * FROM DroneLog ORDER BY id;
 
 This project is for academic purposes. See `LICENSE` for details.
 
-```
-
-
-
-Basta dirlo 👍
 ```
